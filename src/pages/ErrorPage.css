@@ -1,0 +1,63 @@
+/* Reset */
+body {
+  font-family: Roboto, Arial;
+  color: rgb(33, 33, 33);
+  /* The <body> element has a default margin of 8px
+     on all sides. This removes the default margins. */
+  margin: 0;
+}
+
+/* Error container */
+.error-container {
+  text-align: center;
+  padding: 40px;
+  width: 90%;
+}
+
+/* Error code */
+.error-code {
+  font-size: 120px;
+  font-weight: bold;
+  color: #ff4c4c;
+}
+
+/* Error title */
+.error-title {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+/* Error message */
+.error-message {
+  font-size: 16px;
+  color: #cccccc;
+  margin-bottom: 30px;
+}
+
+/* Button */
+.error-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: #ff4c4c;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+
+.error-btn:hover {
+  background: #e04343;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .error-code {
+    font-size: 90px;
+  }
+
+  .error-title {
+    font-size: 22px;
+  }
+}

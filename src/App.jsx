@@ -1,6 +1,7 @@
 import HomePage from './pages/HomePage.jsx'
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage.jsx'
 import OrdersPage from './pages/OrdersPage.jsx'
+import ErrorPage from './pages/ErrorPage.jsx'
 import { Routes, Route } from 'react-router'
 import TrackingPage from './pages/TrackingPage.jsx'
 import './App.css'
@@ -14,6 +15,7 @@ function App() {
         <Route path="checkout" element={<CheckoutPage />} />
         <Route path="orders" element={<OrdersPage />} />
         <Route path="tracking" element={<TrackingPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   )
