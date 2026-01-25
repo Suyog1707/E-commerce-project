@@ -1,4 +1,8 @@
 import { Link } from 'react-router'
+import logoWhite from "../assets/images/logo-white.png";
+import mobileLogoWhite from "../assets/images/mobile-logo-white.png"
+import cartIcon from "../assets/images/icons/cart-icon.png"
+import searchIcon from "../assets/images/icons/search-icon.png"
 import './header.css'
 
 function Header() {
@@ -8,9 +12,9 @@ function Header() {
                 <div class="left-section">
                     <Link to="/" class="header-link">
                         <img class="logo"
-                            src="images/logo-white.png" />
+                            src={logoWhite} />
                         <img class="mobile-logo"
-                            src="images/mobile-logo-white.png" />
+                            src={mobileLogoWhite} />
                     </Link>
                 </div>
 
@@ -18,7 +22,7 @@ function Header() {
                     <input class="search-bar" type="text" placeholder="Search" />
 
                     <button class="search-button">
-                        <img class="search-icon" src="images/icons/search-icon.png" />
+                        <img class="search-icon" src={searchIcon} />
                     </button>
                 </div>
 
@@ -29,7 +33,7 @@ function Header() {
                     </Link>
 
                     <Link class="cart-link header-link" to="/checkout">
-                        <img class="cart-icon" src="images/icons/cart-icon.png" />
+                        <img class="cart-icon" src={cartIcon} />
                         <div class="cart-quantity">3</div>
                         <div class="cart-text">Cart</div>
                     </Link>
