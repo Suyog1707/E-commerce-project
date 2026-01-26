@@ -2,17 +2,44 @@ import HomePage from './pages/HomePage.jsx'
 import CheckoutPage from './pages/CheckoutPage/CheckoutPage.jsx'
 import OrdersPage from './pages/OrdersPage.jsx'
 import ErrorPage from './pages/ErrorPage.jsx'
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import { Router, Routes, Route } from 'react-router'
 import TrackingPage from './pages/TrackingPage.jsx'
 import './App.css'
 
 function App() {
 
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/api/cart-items')
+      .then((responce) => {
+          setCart(responce.data);
+      })
+  });
+
   return (
     <>
       <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="checkout" element={<CheckoutPage />} />
+        <Route
+          index
+          element={
+            <HomePage
+              cart={cart}
+              setCart={setCart}
+            />
+          }
+        />
+        <Route 
+          path="checkout" 
+          element={
+            <CheckoutPage 
+              cart={cart} 
+              setCart={setCart}
+            />
+          }
+        />
         <Route path="orders" element={<OrdersPage />} />
         <Route path="tracking" element={<TrackingPage />} />
         <Route path="*" element={<ErrorPage />} />
