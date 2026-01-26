@@ -1,4 +1,4 @@
-import Header from '../components/Header';
+import Header from '../components/Header.jsx';
 import checkmark from '../assets/images/icons/checkmark.png'
 import { products } from '../../starting code/data/products.js'
 import './HomePage.css';
