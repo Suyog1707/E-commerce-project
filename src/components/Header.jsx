@@ -8,34 +8,34 @@ import './header.css'
 function Header() {
     return (
         <>
-            <div class="header">
-                <div class="left-section">
-                    <Link to="/" class="header-link">
-                        <img class="logo"
+            <div className="header">
+                <div className="left-section">
+                    <Link to="/" className="header-link">
+                        <img className="logo"
                             src={logoWhite} />
-                        <img class="mobile-logo"
+                        <img className="mobile-logo"
                             src={mobileLogoWhite} />
                     </Link>
                 </div>
 
-                <div class="middle-section">
-                    <input class="search-bar" type="text" placeholder="Search" />
+                <div className="middle-section">
+                    <input className="search-bar" type="text" placeholder="Search" />
 
-                    <button class="search-button">
-                        <img class="search-icon" src={searchIcon} />
+                    <button className="search-button">
+                        <img className="search-icon" src={searchIcon} />
                     </button>
                 </div>
 
-                <div class="right-section">
-                    <Link class="orders-link header-link" to="/orders">
+                <div className="right-section">
+                    <Link className="orders-link header-link" to="/orders">
 
-                        <span class="orders-text">Orders</span>
+                        <span className="orders-text">Orders</span>
                     </Link>
 
-                    <Link class="cart-link header-link" to="/checkout">
-                        <img class="cart-icon" src={cartIcon} />
-                        <div class="cart-quantity">3</div>
-                        <div class="cart-text">Cart</div>
+                    <Link className="cart-link header-link" to="/checkout">
+                        <img className="cart-icon" src={cartIcon} />
+                        <div className="cart-quantity">3</div>
+                        <div className="cart-text">Cart</div>
                     </Link>
                 </div>
             </div>
