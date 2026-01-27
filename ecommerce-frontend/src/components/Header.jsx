@@ -9,8 +9,8 @@ function Header({ cart }) {
 
     let totalQuantity = 0;
 
-    cart.forEach((cartItems) => {
-        totalQuantity += cartItems.quantity;
+    cart.forEach((cartItem) => {
+        totalQuantity += cartItem.quantity;
     });
 
     return (

@@ -1,11 +1,10 @@
-import { Link } from 'react-router';
 import Header from '../components/Header.jsx'
 import './ErrorPage.css'
 
-function ErrorPage() {
+function ErrorPage({ cart }) {
     return (
         <>
-            <Header />
+            <Header cart={cart} />
 
             <div class="error-container">
                 <div class="error-code">404</div>
