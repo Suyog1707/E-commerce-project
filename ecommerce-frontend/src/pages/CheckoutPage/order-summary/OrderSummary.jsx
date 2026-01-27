@@ -1,18 +1,7 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import CartItemDetailsGrid from "./cart-item-details-grid/CartItemDetailsGrid";
 import DeliveryDate from "./DeliveryDate.jsx";
 
-function OrderSummary({ cart }) {
-
-    const [deliveryOptions, setDeliveryOptions] = useState([]);
-
-    useEffect(() => {
-        axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-            .then((response) => {
-                setDeliveryOptions(response.data);
-            })
-    }, [])
+function OrderSummary({ cart, deliveryOptions }) {   
 
     return (
         <div className="order-summary">
