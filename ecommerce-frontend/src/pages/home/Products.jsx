@@ -4,9 +4,9 @@ import { useState } from "react";
 
 function Products({ product, loadCart }) {
 
-    const [quantity, setQuantity] = useState();
+    const [quantity, setQuantity] = useState(1);
 
-    const quantitySelected = (event) => {
+    const selectQuantity = (event) => {
         const quantitySelected = Number(event.target.value);
         setQuantity(quantitySelected);
     };
@@ -14,10 +14,10 @@ function Products({ product, loadCart }) {
     const addToCart = async () => {
         await axios.post('/api/cart-items', {
             productId: product.id,
-            quantity: quantity
+            quantity
         });
         await loadCart();
-    }
+    };
 
     return (
         <div key={product.id} className="product-container">
@@ -43,7 +43,7 @@ function Products({ product, loadCart }) {
             </div>
 
             <div className="product-quantity-container">
-                <select value={quantity} onChange={quantitySelected}>
+                <select value={quantity} onChange={selectQuantity}>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>

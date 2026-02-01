@@ -2,7 +2,7 @@ import dayjs from "dayjs";
 import formatMoney from "../../../utils/money";
 import OrderDetailsGrid from "./OrderDetailsGrid";
 
-function OrderGrid({ orders }) {
+function OrderGrid({ orders, loadCart }) {
     return (
         <div className="orders-grid">
 
@@ -28,7 +28,7 @@ function OrderGrid({ orders }) {
                             </div>
                         </div>
 
-                        <OrderDetailsGrid order={order} />
+                        <OrderDetailsGrid order={order} loadCart={loadCart} />
                     </div>
                 );
             })}
