@@ -43,7 +43,7 @@ function CheckoutPage({ cart, loadCart }) {
 
                 <div className="checkout-grid">
                     <OrderSummary cart={cart} deliveryOptions={deliveryOptions} loadCart={loadCart} />
-                    <PaymentSummary paymentsummary={paymentsummary} />
+                    <PaymentSummary paymentsummary={paymentsummary} loadCart={loadCart} />
                 </div>
             </div>
         </>
