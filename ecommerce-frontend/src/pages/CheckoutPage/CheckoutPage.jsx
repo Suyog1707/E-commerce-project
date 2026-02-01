@@ -11,7 +11,7 @@ function CheckoutPage({ cart, loadCart }) {
     const [paymentsummary, setPaymentsummary] = useState(null);
 
     const updarePaymentSummary = async () => {
-         let response = await axios.get('/api/payment-summary')
+        let response = await axios.get('/api/payment-summary')
         setPaymentsummary(response.data);
     }
 
