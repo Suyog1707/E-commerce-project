@@ -1,7 +1,7 @@
 import CartItemDetailsGrid from "./cart-item-details-grid/CartItemDetailsGrid";
 import DeliveryDate from "./DeliveryDate.jsx";
 
-function OrderSummary({ cart, deliveryOptions }) {   
+function OrderSummary({ cart, deliveryOptions, loadCart }) {   
 
     return (
         <div className="order-summary">
@@ -14,7 +14,7 @@ function OrderSummary({ cart, deliveryOptions }) {
                 return (
                     <div key={cartItem.productId} className="cart-item-container">
                         <DeliveryDate selectDeliveryOption={selectDeliveryOption} />
-                        <CartItemDetailsGrid cartItem={cartItem} deliveryOptions={deliveryOptions} />
+                        <CartItemDetailsGrid cartItem={cartItem} deliveryOptions={deliveryOptions} loadCart={loadCart} />
                     </div>
                 );
             })}
