@@ -1,6 +1,7 @@
 import axios from "axios";
 import formatMoney from "../../../../utils/money";
 import DeliveryOptions from "./DeliveryOptions";
+import { useState } from "react";
 
 function CartItemDetailsGrid({ cartItem, deliveryOptions, loadCart }) {
 
@@ -8,6 +9,34 @@ function CartItemDetailsGrid({ cartItem, deliveryOptions, loadCart }) {
         await axios.delete(`/api/cart-items/${cartItem.productId}`);
         await loadCart();
     };
+
+    const [quantity, setQuantity] = useState(cartItem.quantity);
+    const [isUpdating, setIsUpdating] = useState(false);
+
+    const addQuantityBox = () => {
+        setIsUpdating(true);
+    };
+
+    const updateingQuentity = (event) => {
+        setQuantity(event.target.value);
+    };
+
+    const updateQuentityOnBackend = async () => {
+        await axios.put(`/api/cart-items/${cartItem.productId}`, {
+            quantity: Number(quantity)
+        });
+        await loadCart();
+        setIsUpdating(false);
+    };
+
+    const whenEnterKeyHit = (event) => {
+        if (event.key === 'Enter')
+            updateQuentityOnBackend();
+        else if (event.key === 'Escape') {
+            setQuantity(cartItem.quantity);
+            setIsUpdating(false);
+        }
+    }
 
     return (
         <div className="cart-item-details-grid">
@@ -24,10 +53,18 @@ function CartItemDetailsGrid({ cartItem, deliveryOptions, loadCart }) {
                 <div className="product-quantity">
                     <span>
                         Quantity: <span className="quantity-label">
+                            {isUpdating && <input
+                                value={quantity}
+                                type="text"
+                                className="quantity-input-box"
+                                style={{ width: 50 }}
+                                onChange={updateingQuentity}
+                                onKeyDown={whenEnterKeyHit}
+                            />}
                             {cartItem.quantity}
                         </span>
                     </span>
-                    <span className="update-quantity-link link-primary">
+                    <span className="update-quantity-link link-primary" onClick={isUpdating ? updateQuentityOnBackend : addQuantityBox}>
                         Update
                     </span>
                     <span className="delete-quantity-link link-primary" onClick={deleteCartItem}>

@@ -11,6 +11,15 @@ function Products({ product, loadCart }) {
         setQuantity(quantitySelected);
     };
 
+    const [yourState, setYourState] = useState(false)
+    const showAdded = () => {
+        setYourState(true)
+
+        setTimeout(() => {
+            setYourState(false)
+        }, 2000);
+    }
+
     const addToCart = async () => {
         await axios.post('/api/cart-items', {
             productId: product.id,
@@ -18,6 +27,8 @@ function Products({ product, loadCart }) {
         });
         await loadCart();
     };
+
+
 
     return (
         <div key={product.id} className="product-container">
@@ -59,13 +70,13 @@ function Products({ product, loadCart }) {
 
             <div className="product-spacer"></div>
 
-            <div className="added-to-cart">
+            <div className="added-to-cart" style={{ opacity: yourState ? 1 : 0 }}>
                 <img src="images/icons/checkmark.png" />
                 Added
             </div>
 
             <button className="add-to-cart-button button-primary"
-                onClick={addToCart}
+                onClick={() => { addToCart(); showAdded(); }}
             >
                 Add to Cart
             </button>
