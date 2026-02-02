@@ -2,6 +2,8 @@ import formatMoney from "../../utils/money";
 import axios from "axios";
 import { useState } from "react";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 function Products({ product, loadCart }) {
 
     const [quantity, setQuantity] = useState(1);
@@ -21,7 +23,7 @@ function Products({ product, loadCart }) {
     }
 
     const addToCart = async () => {
-        await axios.post('/api/cart-items', {
+        await axios.post(`${BACKEND_URL}/api/cart-items`, {
             productId: product.id,
             quantity
         });
@@ -71,7 +73,7 @@ function Products({ product, loadCart }) {
             <div className="product-spacer"></div>
 
             <div className="added-to-cart" style={{ opacity: yourState ? 1 : 0 }}>
-                <img src="images/icons/checkmark.png" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsDwaDOGfqAcWdLGxdWKZ3GdPMA1kuZ2S2-g&s" />
                 Added
             </div>
 

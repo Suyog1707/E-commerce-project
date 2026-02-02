@@ -3,6 +3,7 @@ import axios from 'axios';
 import OrderGrid from './orders-grid/OrderGrid.jsx';
 import { useState, useEffect } from 'react';
 import './OrdersPage.css';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 
 function OrdersPage({ cart, loadCart }) {
@@ -11,7 +12,7 @@ function OrdersPage({ cart, loadCart }) {
 
     useEffect(() => {
         const fetchOrdersPageData = async () => {
-            const response = await axios.get('/api/orders?expand=products')
+            const response = await axios.get(`${BACKEND_URL}/api/orders?expand=products`)
             setOrders(response.data);
         }
 

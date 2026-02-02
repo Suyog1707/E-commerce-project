@@ -8,12 +8,14 @@ import { Router, Routes, Route } from 'react-router'
 import './App.css'
 import TrackingPage from './pages/TrackingPage/TrackingPage.jsx'
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 function App() {
 
   const [cart, setCart] = useState([]);
 
   const loadCart = async () => {
-    const response = await axios.get('/api/cart-items?expand=product')
+    const response = await axios.get(`${BACKEND_URL}/api/cart-items?expand=product`)
     setCart(response.data);
   }
 

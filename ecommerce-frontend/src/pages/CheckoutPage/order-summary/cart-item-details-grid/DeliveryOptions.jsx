@@ -1,6 +1,7 @@
 import formatMoney from "../../../../utils/money";
 import dayjs from "dayjs";
 import axios from 'axios';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function DeliveryOptions({ deliveryOptions, cartItem, loadCart }) {
     return (
@@ -18,7 +19,7 @@ function DeliveryOptions({ deliveryOptions, cartItem, loadCart }) {
                 }
 
                 const updateDeliveryOption = async () => {
-                    await axios.put(`/api/cart-items/${cartItem.productId}`, {
+                    await axios.put(`${BACKEND_URL}/api/cart-items/${cartItem.productId}`, {
                         deliveryOptionId: deliveryOption.id
                     });
                     await loadCart();

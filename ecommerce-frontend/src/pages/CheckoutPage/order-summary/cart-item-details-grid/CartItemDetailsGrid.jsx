@@ -2,11 +2,12 @@ import axios from "axios";
 import formatMoney from "../../../../utils/money";
 import DeliveryOptions from "./DeliveryOptions";
 import { useState } from "react";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function CartItemDetailsGrid({ cartItem, deliveryOptions, loadCart }) {
 
     const deleteCartItem = async () => {
-        await axios.delete(`/api/cart-items/${cartItem.productId}`);
+        await axios.delete(`${BACKEND_URL}/api/cart-items/${cartItem.productId}`);
         await loadCart();
     };
 
@@ -22,7 +23,7 @@ function CartItemDetailsGrid({ cartItem, deliveryOptions, loadCart }) {
     };
 
     const updateQuentityOnBackend = async () => {
-        await axios.put(`/api/cart-items/${cartItem.productId}`, {
+        await axios.put(`${BACKEND_URL}/api/cart-items/${cartItem.productId}`, {
             quantity: Number(quantity)
         });
         await loadCart();

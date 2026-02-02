@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router";
 import formatMoney from "../../utils/money";
 import axios from 'axios';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function PaymentSummary({ paymentsummary, loadCart }) {
 
     const navigate = useNavigate();
 
     const createOrder = async () => {
-        await axios.post('/api/orders');
+        await axios.post(`${BACKEND_URL}/api/orders`);
         await loadCart();
         navigate('/orders');
     };

@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Header from '../../components/Header.jsx';
 import './HomePage.css';
 import ProductsGrid from "./ProductsGrid.jsx";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
+
 
 function HomePage({ cart, loadCart }) {
 
@@ -10,12 +12,13 @@ function HomePage({ cart, loadCart }) {
 
     useEffect(() => {
         const getHomeData = async () => {
-            const response = await axios.get('/api/products');
+            const response = await axios.get(`${BACKEND_URL}/api/products`);
             setProducts(response.data);
         };
 
         getHomeData();
     }, []);
+
 
     return (
         <>

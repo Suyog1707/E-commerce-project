@@ -4,6 +4,7 @@ import './CheckoutPage.css';
 import axios from 'axios';
 import OrderSummary from './order-summary/OrderSummary.jsx';
 import PaymentSummary from './PaymentSummary.jsx';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function CheckoutPage({ cart, loadCart }) {
 
@@ -11,7 +12,7 @@ function CheckoutPage({ cart, loadCart }) {
     const [paymentsummary, setPaymentsummary] = useState(null);
 
     const updarePaymentSummary = async () => {
-        let response = await axios.get('/api/payment-summary')
+        let response = await axios.get(`${BACKEND_URL}/api/payment-summary`)
         setPaymentsummary(response.data);
     }
 
@@ -19,7 +20,7 @@ function CheckoutPage({ cart, loadCart }) {
 
         const fetchCheckoutPageData = async () => {
 
-            let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
+            let response = await axios.get(`${BACKEND_URL}/api/delivery-options?expand=estimatedDeliveryTime`)
             setDeliveryOptions(response.data);
 
         }

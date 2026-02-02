@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs';
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function TrackingPage({ cart }) {
 
@@ -12,7 +13,7 @@ function TrackingPage({ cart }) {
 
     useEffect(() => {
         const fetchAppData = async () => {
-            const response = await axios.get(`/api/orders/${orderId}?expand=products`);
+            const response = await axios.get(`${BACKEND_URL}/api/orders/${orderId}?expand=products`);
             setOrder(response.data);
         }
 

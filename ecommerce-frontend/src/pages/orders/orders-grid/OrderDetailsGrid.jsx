@@ -3,6 +3,7 @@ import buyAgain from '../../../assets/images/icons/buy-again.png';
 import axios from "axios";
 import { Fragment } from "react";
 import { Link, useNavigate } from "react-router";
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL
 
 function OrderDetailsGrid({ order, loadCart }) {
 
@@ -15,7 +16,7 @@ function OrderDetailsGrid({ order, loadCart }) {
             {order.products.map((orderProduct) => {
 
                 const addToCart = async () => {
-                    await axios.post('/api/cart-items', {
+                    await axios.post(`${BACKEND_URL}/api/cart-items`, {
                         productId: orderProduct.productId,
                         quantity: 1
                     });
